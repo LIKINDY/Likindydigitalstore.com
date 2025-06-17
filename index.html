@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likindy Digital Solution - Mobile Accessories & Repair</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic CSS for the layout - you'll likely put this in style.css */
+        :root {
+            --primary-dark: #2c3e50; /* A dark blue/grey, like in your logo's text */
+            --accent-blue: #3498db; /* A vibrant blue, often used for buttons */
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --card-bg: #ffffff;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .site-header {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .site-branding {
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .site-branding .logo-img {
+            height: 50px; /* Adjust as needed */
+            margin-right: 15px;
+        }
+
+        .site-branding .site-title {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .site-navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+
+        .site-navigation li {
+            margin: 0 15px;
+        }
+
+        .site-navigation a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .site-navigation a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/hero-bg.jpg') no-repeat center center/cover; /* Placeholder background */
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-cta-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        /* Product and Service Grids */
+        .product-grid, .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card, .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .product-card:hover, .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .product-card img, .service-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .product-card-content, .service-card-content {
+            padding: 20px;
+        }
+
+        .product-card h3, .service-card h3 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .product-card .description, .service-card .description {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            min-height: 45px; /* Ensures consistent height for descriptions */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-box-orient: vertical;
+        }
+
+        .product-card .price {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        .view-details-button {
+            display: inline-block;
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details-button:hover {
+            background-color: var(--accent-blue);
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background-color: var(--accent-blue);
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #fff;
+            color: var(--accent-blue);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            color: #fff;
+        }
+
+        /* Footer Styles */
+        .site-footer {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer-info p {
+            margin: 5px 0;
+        }
+
+        .footer-info a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .site-navigation ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .site-navigation li {
+                margin: 10px 0;
+            }
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1.2em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .product-grid, .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-section h2 {
+                font-size: 2.2em;
+            }
+            .cta-section p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="site-branding">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Likindy Digital Solution Logo" class="logo-img">
+                </a>
+                <h1 class="site-title">Likindy Digital Solution</h1>
+            </div>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Likindy Digital Solution</h1>
+                <p>Your Trusted Partner for Quality Mobile Accessories & Expert Phone Repair Services in Tanzania.</p>
+                <a href="shop.html" class="hero-cta-button">Shop Now</a>
+            </div>
+        </section>
+
+        <section class="products-section container">
+            <h2 class="section-title">Featured Mobile Accessories</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="assets/images/product1.jpg" alt="High-Quality Phone Cover">
+                    <div class="product-card-content">
+                        <h3>Premium Phone Cover for iPhone 13</h3>
+                        <p class="description">
+                            Durable and stylish cover providing full protection. Inalinda simu yako kikamilifu.
+                        </p>
+                        <p class="price">Tsh 25,000.00</p>
+                        <a href="product_single.html?id=1" class="view-details-button">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/product2.jpg" alt="Screen Protector">
+                    <div class="product-card-content">
+                        <h3>Ultra-Clear Screen Protector (Universal)</h3>
+                        <p class="description">
+                            Crystal-clear protection against scratches and drops. Kinga kioo dhidi ya mikwaruzo.
+                        </p>
+                        <p class="price">Tsh 15,000.00</p>
+                        <a href="product_single.html?id=2" class="view-details-button">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/product3.jpg" alt="Fast Charger">
+                    <div class="product-card-content">
+                        <h3>20W USB-C Fast Charger</h3>
+                        <p class="description">
+                            Quickly charge your phone with this powerful adapter. Chaja ya haraka kwa simu yako.
+                        </p>
+                        <p class="price">Tsh 30,000.00</p>
+                        <a href="product_single.html?id=3" class="view-details-button">View Details</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/product4.jpg" alt="Wireless Earbuds">
+                    <div class="product-card-content">
+                        <h3>Wireless Bluetooth Earbuds</h3>
+                        <p class="description">
+                            Enjoy high-quality sound on the go. Furahia muziki safi bila waya.
+                        </p>
+                        <p class="price">Tsh 55,000.00</p>
+                        <a href="product_single.html?id=4" class="view-details-button">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="shop.html" class="view-details-button" style="background-color: var(--accent-blue);">View All Products</a>
+            </p>
+        </section>
+
+        <section class="services-section container">
+            <h2 class="section-title">Our Expert Repair Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="assets/images/service1.jpg" alt="Screen Replacement">
+                    <div class="service-card-content">
+                        <h3>Mobile Screen Replacement</h3>
+                        <p class="description">
+                            Professional replacement of cracked or broken phone screens. Kubadilisha vioo vya simu vilivyovunjika.
+                        </p>
+                        <a href="services.html#service-screen" class="view-details-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/service2.jpg" alt="Battery Repair">
+                    <div class="service-card-content">
+                        <h3>Battery & Charging System Repair</h3>
+                        <p class="description">
+                            Fixing battery draining issues and charging port problems. Kukarabati betri na mfumo wa kuchaji.
+                        </p>
+                        <a href="services.html#service-battery" class="view-details-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/service3.jpg" alt="Software Repair">
+                    <div class="service-card-content">
+                        <h3>Software & System Optimization</h3>
+                        <p class="description">
+                            Solving software glitches, updates, and performance issues. Kurekebisha matatizo ya programu na mfumo.
+                        </p>
+                        <a href="services.html#service-software" class="view-details-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="services.html" class="view-details-button" style="background-color: var(--primary-dark);">View All Services</a>
+            </p>
+        </section>
+
+
+        <section class="cta-section container">
+            <h2>Need a Phone Repair?</h2>
+            <p>Our expert technicians are here to fix your mobile device with precision and speed. From screen replacements to battery issues, we've got you covered.</p>
+            <a href="contact.html" class="cta-button">Get a Free Quote</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-info">
+            <p>
+                <strong>Location:</strong> Mtoni Kwa Kisasi, Dar es Salaam, Tanzania<br>
+                <strong>Email:</strong> <a href="mailto:likindyismail@gmail.com">likindyismail@gmail.com</a><br>
+                <strong>Phone:</strong> +255 658 415488 | +255 625 415484
+            </p>
+            <p>&copy; Likindy Digital All Rights Reserved 2025</p>
+        </div>
+    </footer>
+
+</body>
+</html>
